@@ -1,5 +1,6 @@
 import React from 'react';
 import { MovieCard } from '../movie-card/movie-card';
+import { MovieView } from '../movie-view/movie-view';
 
 class MainView extends React.Component {
 
@@ -7,21 +8,32 @@ class MainView extends React.Component {
         super();
         this.state = {
             movies: [
-                { _id: 1, Title: 'Inception', Description: 'desc1...', ImagePath: '...' },
-                { _id: 2, Title: 'The Shawshank Redemption', Description: 'desc2...', ImagePath: '...' },
-                { _id: 1, Title: 'Gladiator', Description: 'desc3...', ImagePath: '...' },
-            ]
+                { _id: 1, Title: 'Toy Story 3', Description: 'Andy Davis, now 17, is leaving for college. Woody, Buzz Lightyear, and the other toys are accidentally donated to a daycare center by Andy\'s mother, and the toys must decide where their loyalties lie.', ImagePath: <img src='https://resizing.flixster.com/ZSzJXHtm-ruJfK9DRziqiTXzwPI=/ems.ZW1zLXByZC1hc3NldHMvbW92aWVzLzYyMTgxNjE0LWRlNGYtNGMxNC1iMmMxLWUyNzMyZTIxNTBlMC53ZWJw' alt='poster'/> },
+                { _id: 2, Title: 'The Shining', Description: 'The film\'s central character is Jack Torrance (Nicholson), an aspiring writer and recovering alcoholic who accepts a position as the off-season caretaker of the isolated historic Overlook Hotel in the Colorado Rockies, with his wife, Wendy Torrance (Duvall), and young son, Danny Torrance (Lloyd).', ImagePath: <img src="https://upload.wikimedia.org/wikipedia/pt/2/22/Shining.png" alt='poster'/> },
+                { _id: 3, Title: 'We\'re the Millers', Description: 'The plot follows a small-time pot dealer (Sudeikis) who convinces his neighbors to help him by pretending to be his family, in order to smuggle drugs from Mexico into the United States.', ImagePath: <img src='https://upload.wikimedia.org/wikipedia/pt/thumb/4/4a/We%27re_the_Millers.jpg/300px-We%27re_the_Millers.jpg' alt='poster'/> },
+            ],
+            selectedMovie: null
         }
 }
 
+    setSelectedMovie(newSelectedMovie) {
+        this.setState({
+            selectedMovie: newSelectedMovie
+        });
+    }
+    
     render() {
-        const { movies } = this.state;
+        const { movies, selectedMovie } = this.state;
+
+        if (selectedMovie) return <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => {
+            this.setSelectedMovie(newSelectedMovie);
+        }}/>;
 
         if (movies.length === 0) return <div className='main-view'>The list is empty!</div>;
 
         return (
             <div className='main-view'>
-                {movies.map(movie => <MovieCard key={movie._id} movieData={movie}/>)}
+                {movies.map(movie => <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }} />)}
             </div>
         );
     }
