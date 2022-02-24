@@ -22951,40 +22951,19 @@ class MainView extends _reactDefault.default.Component {
                     _id: 1,
                     Title: 'Toy Story 3',
                     Description: 'Andy Davis, now 17, is leaving for college. Woody, Buzz Lightyear, and the other toys are accidentally donated to a daycare center by Andy\'s mother, and the toys must decide where their loyalties lie.',
-                    ImagePath: /*#__PURE__*/ _jsxDevRuntime.jsxDEV("img", {
-                        src: "https://resizing.flixster.com/ZSzJXHtm-ruJfK9DRziqiTXzwPI=/ems.ZW1zLXByZC1hc3NldHMvbW92aWVzLzYyMTgxNjE0LWRlNGYtNGMxNC1iMmMxLWUyNzMyZTIxNTBlMC53ZWJw",
-                        alt: "poster"
-                    }, void 0, false, {
-                        fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 11,
-                        columnNumber: 278
-                    }, this)
+                    ImagePath: 'https://upload.wikimedia.org/wikipedia/pt/7/7e/Toy_Story_3.jpg'
                 },
                 {
                     _id: 2,
                     Title: 'The Shining',
                     Description: 'The film\'s central character is Jack Torrance (Nicholson), an aspiring writer and recovering alcoholic who accepts a position as the off-season caretaker of the isolated historic Overlook Hotel in the Colorado Rockies, with his wife, Wendy Torrance (Duvall), and young son, Danny Torrance (Lloyd).',
-                    ImagePath: /*#__PURE__*/ _jsxDevRuntime.jsxDEV("img", {
-                        src: "https://upload.wikimedia.org/wikipedia/pt/2/22/Shining.png",
-                        alt: "poster"
-                    }, void 0, false, {
-                        fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 12,
-                        columnNumber: 375
-                    }, this)
+                    ImagePath: 'https://upload.wikimedia.org/wikipedia/pt/2/22/Shining.png'
                 },
                 {
                     _id: 3,
                     Title: 'We\'re the Millers',
                     Description: 'The plot follows a small-time pot dealer (Sudeikis) who convinces his neighbors to help him by pretending to be his family, in order to smuggle drugs from Mexico into the United States.',
-                    ImagePath: /*#__PURE__*/ _jsxDevRuntime.jsxDEV("img", {
-                        src: "https://upload.wikimedia.org/wikipedia/pt/thumb/4/4a/We%27re_the_Millers.jpg/300px-We%27re_the_Millers.jpg",
-                        alt: "poster"
-                    }, void 0, false, {
-                        fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 13,
-                        columnNumber: 269
-                    }, this)
+                    ImagePath: 'https://upload.wikimedia.org/wikipedia/pt/thumb/4/4a/We%27re_the_Millers.jpg/300px-We%27re_the_Millers.jpg'
                 }, 
             ],
             selectedMovie: null
@@ -23094,7 +23073,7 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 class MovieView extends _reactDefault.default.Component {
     render() {
-        const { movie  } = this.props;
+        const { movie , onBackClick  } = this.props;
         return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
             className: "movie-view",
             children: [
@@ -23164,7 +23143,7 @@ class MovieView extends _reactDefault.default.Component {
                 }, this),
                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV("button", {
                     onClick: ()=>{
-                        this.props.onBackClick(null);
+                        onBackClick(null);
                     },
                     children: "Back"
                 }, void 0, false, {
