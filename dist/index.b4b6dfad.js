@@ -23164,7 +23164,7 @@ class MovieView extends _reactDefault.default.Component {
                 }, this),
                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV("button", {
                     onClick: ()=>{
-                        onBackClick(null);
+                        this.props.onBackClick(null);
                     },
                     children: "Back"
                 }, void 0, false, {
