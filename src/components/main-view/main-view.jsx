@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
+import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
@@ -34,6 +35,11 @@ class MainView extends React.Component {
             selectedMovie: movie
         });
     }
+    onRegistration(newUser) {
+        this.setState({
+            newUser
+        });
+    }
 
     onLoggedIn(user) {
         this.setState({
@@ -42,8 +48,9 @@ class MainView extends React.Component {
     }
     
     render() {
-        const { movies, selectedMovie, user } = this.state;
+        const { movies, selectedMovie, user, newUser } = this.state;
 
+        if (!newUser) return <RegistrationView onRegistration={newUser => this.onRegistration(newUser)} />;
         if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
 
         if (selectedMovie) return <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => {
