@@ -22802,7 +22802,8 @@ class MainView extends _reactDefault.default.Component {
         this.state = {
             movies: [],
             selectedMovie: null,
-            user: null
+            user: null,
+            openRegistrationView: null
         };
     }
     componentDidMount() {
@@ -22825,12 +22826,12 @@ class MainView extends _reactDefault.default.Component {
         });
     }
     render() {
-        const { movies , selectedMovie , user: user1  } = this.state;
+        const { movies , selectedMovie , user: user1 , openRegistrationView  } = this.state;
         if (!user1) return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_loginView.LoginView, {
             onLoggedIn: (user)=>this.onLoggedIn(user)
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 47,
+            lineNumber: 48,
             columnNumber: 27
         }, this));
         if (selectedMovie) return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_movieView.MovieView, {
@@ -22840,14 +22841,14 @@ class MainView extends _reactDefault.default.Component {
             }
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 49,
+            lineNumber: 50,
             columnNumber: 35
         }, this));
         if (movies.length === 0) return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
             className: "main-view"
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 53,
+            lineNumber: 54,
             columnNumber: 41
         }, this));
         return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
@@ -22859,13 +22860,13 @@ class MainView extends _reactDefault.default.Component {
                     }
                 }, movie._id, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 57,
+                    lineNumber: 58,
                     columnNumber: 38
                 }, this)
             )
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 56,
+            lineNumber: 57,
             columnNumber: 13
         }, this));
     }
