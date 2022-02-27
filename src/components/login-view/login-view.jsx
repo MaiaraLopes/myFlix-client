@@ -13,6 +13,7 @@ export function LoginView(props) {
 
     const handleRegisterBtn = (e) => {
         e.preventDefault();
+        props.openRegistrationView(true)
     }
 
     return (
