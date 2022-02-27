@@ -24476,6 +24476,9 @@ function LoginView(props) {
         console.log(username, password);
         props.onLoggedIn(username);
     };
+    const handleRegisterBtn = (e)=>{
+        e.preventDefault();
+    };
     return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("form", {
         children: [
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV("label", {
@@ -24487,13 +24490,13 @@ function LoginView(props) {
                         onChange: (e)=>setUsername(e.target.value)
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 18,
+                        lineNumber: 22,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 16,
+                lineNumber: 20,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV("label", {
@@ -24505,13 +24508,13 @@ function LoginView(props) {
                         onChange: (e)=>setPassword(e.target.value)
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 21,
+                        lineNumber: 25,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 20,
+                lineNumber: 24,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV("button", {
@@ -24520,21 +24523,22 @@ function LoginView(props) {
                 children: "Submit"
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 23,
+                lineNumber: 27,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV("button", {
                 type: "submit",
+                onClick: handleRegisterBtn,
                 children: "Register here"
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 24,
+                lineNumber: 28,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/login-view/login-view.jsx",
-        lineNumber: 15,
+        lineNumber: 19,
         columnNumber: 9
     }, this));
 }
