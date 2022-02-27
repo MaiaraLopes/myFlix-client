@@ -43,10 +43,10 @@ class MainView extends React.Component {
         });
     }
 
-    toggleRegistrationView(value) {
+    toggleRegistrationView = (value) => {
         this.setState({
             openRegistrationView: value
-        })
+        });
     }
 
     render() {

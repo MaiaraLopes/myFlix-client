@@ -22826,11 +22826,11 @@ class MainView extends _reactDefault.default.Component {
             user
         });
     }
-    toggleRegistrationView(value) {
+    toggleRegistrationView = (value)=>{
         this.setState({
             openRegistrationView: value
         });
-    }
+    };
     render() {
         const { movies , selectedMovie , user: user1 , openRegistrationView  } = this.state;
         if (openRegistrationView) return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_registrationView.RegistrationView, {
