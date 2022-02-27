@@ -22834,6 +22834,7 @@ class MainView extends _reactDefault.default.Component {
     render() {
         const { movies , selectedMovie , user: user1 , openRegistrationView  } = this.state;
         if (openRegistrationView) return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_registrationView.RegistrationView, {
+            closeRegistrationView: this.toggleRegistrationView
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
             lineNumber: 55,
@@ -22841,6 +22842,8 @@ class MainView extends _reactDefault.default.Component {
         }, this));
         if (!user1) return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_loginView.LoginView, {
             onLoggedIn: (user)=>this.onLoggedIn(user)
+            ,
+            openRegistrationView: this.toggleRegistrationView
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
             lineNumber: 57,

@@ -52,9 +52,9 @@ class MainView extends React.Component {
     render() {
         const { movies, selectedMovie, user, openRegistrationView } = this.state;
 
-        if (openRegistrationView) return <RegistrationView />;
-        
-        if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+        if (openRegistrationView) return <RegistrationView closeRegistrationView={this.toggleRegistrationView}/>;
+
+        if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} openRegistrationView={this.toggleRegistrationView}/>;
 
         if (selectedMovie) return <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => {
             this.setSelectedMovie(newSelectedMovie);
