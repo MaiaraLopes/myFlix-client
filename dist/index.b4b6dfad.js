@@ -22825,13 +22825,18 @@ class MainView extends _reactDefault.default.Component {
             user
         });
     }
+    toggleRegistrationView(value) {
+        this.setState({
+            openRegistrationView: value
+        });
+    }
     render() {
         const { movies , selectedMovie , user: user1 , openRegistrationView  } = this.state;
         if (!user1) return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_loginView.LoginView, {
             onLoggedIn: (user)=>this.onLoggedIn(user)
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 48,
+            lineNumber: 54,
             columnNumber: 27
         }, this));
         if (selectedMovie) return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_movieView.MovieView, {
@@ -22841,14 +22846,14 @@ class MainView extends _reactDefault.default.Component {
             }
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 50,
+            lineNumber: 56,
             columnNumber: 35
         }, this));
         if (movies.length === 0) return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
             className: "main-view"
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 54,
+            lineNumber: 60,
             columnNumber: 41
         }, this));
         return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
@@ -22860,13 +22865,13 @@ class MainView extends _reactDefault.default.Component {
                     }
                 }, movie._id, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 58,
+                    lineNumber: 64,
                     columnNumber: 38
                 }, this)
             )
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 57,
+            lineNumber: 63,
             columnNumber: 13
         }, this));
     }

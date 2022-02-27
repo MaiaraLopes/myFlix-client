@@ -42,6 +42,12 @@ class MainView extends React.Component {
         });
     }
 
+    toggleRegistrationView(value) {
+        this.setState({
+            openRegistrationView: value
+        })
+    }
+
     render() {
         const { movies, selectedMovie, user, openRegistrationView } = this.state;
 
