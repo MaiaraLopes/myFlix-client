@@ -6,13 +6,6 @@ export function RegistrationView(props) {
     const [email, setEmail] = useState('');
     const [birthdate, setBirthdate] = useState('')
 
-
-const handleRegistration = (e) => {
-        e.preventDefault();
-        console.log(newUsername, password, email, birthdate);
-        props.onRegistration(newUsername);
-    };
-
     return (
         <form>
             <label>
@@ -30,7 +23,7 @@ const handleRegistration = (e) => {
                 Birthdate:
                 <input type='date' value={birthdate} onChange={e => setBirthdate(e.target.value)} />
             </label>
-            <button type='submit' onClick={handleRegistration}>Submit</button>
+            <button type='submit'>Submit</button>
         </form>
 );
     }

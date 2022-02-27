@@ -14,7 +14,6 @@ class MainView extends React.Component {
             movies: [],
             selectedMovie: null,
             user: null,
-            newUser: null
         }
     }
     
@@ -42,19 +41,10 @@ class MainView extends React.Component {
         });
     }
 
-    onRegistration(newUser) {
-        this.setState({
-            newUser
-        });
-    }
-
     render() {
-        const { movies, selectedMovie, user, newUser } = this.state;
+        const { movies, selectedMovie, user } = this.state;
 
         if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-
-        //if (!newUser) return <RegistrationView onRegistration={newUser => this.onRegistration(newUser)} />;
-        if (newUser) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
 
         if (selectedMovie) return <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => {
             this.setSelectedMovie(newSelectedMovie);

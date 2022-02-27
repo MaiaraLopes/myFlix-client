@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 export function LoginView(props) {
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -8,12 +9,6 @@ export function LoginView(props) {
         e.preventDefault();
         console.log(username, password);
         props.onLoggedIn(username);
-    };
-
-    const handleRegistration = (e) => {
-        e.preventDefault();
-        console.log(username, password);
-        props.onRegistration(username);
     };
 
     return (
@@ -26,7 +21,7 @@ export function LoginView(props) {
                 <input type='password' value={password} onChange={e => setPassword(e.target.value)} />
             </label>
             <button type='submit' onClick={handleSubmit}>Submit</button>
-            <button type='submit' onClick={handleRegistration}>Register here</button>
+            <button type='submit'>Register here</button>
         </form>
     );
 }
