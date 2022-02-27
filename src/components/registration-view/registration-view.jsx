@@ -8,7 +8,7 @@ export function RegistrationView(props) {
 
     const handleRegistrationBtn = (e) => {
         e.preventDefault();
-        props.closeRegistrationView(false)
+        props.toggleRegistrationView(false)
     }
     
 

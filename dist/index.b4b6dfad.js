@@ -22834,7 +22834,7 @@ class MainView extends _reactDefault.default.Component {
     render() {
         const { movies , selectedMovie , user: user1 , openRegistrationView  } = this.state;
         if (openRegistrationView) return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_registrationView.RegistrationView, {
-            closeRegistrationView: this.toggleRegistrationView
+            toggleRegistrationView: this.toggleRegistrationView
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
             lineNumber: 55,
@@ -22843,7 +22843,7 @@ class MainView extends _reactDefault.default.Component {
         if (!user1) return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_loginView.LoginView, {
             onLoggedIn: (user)=>this.onLoggedIn(user)
             ,
-            openRegistrationView: this.toggleRegistrationView
+            toggleRegistrationView: this.toggleRegistrationView
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
             lineNumber: 57,
@@ -24478,7 +24478,7 @@ function LoginView(props) {
     };
     const handleRegisterBtn = (e)=>{
         e.preventDefault();
-        props.openRegistrationView(true);
+        props.toggleRegistrationView(true);
     };
     return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("form", {
         children: [
@@ -25582,7 +25582,7 @@ function RegistrationView(props) {
     const [birthdate, setBirthdate] = _react.useState('');
     const handleRegistrationBtn = (e)=>{
         e.preventDefault();
-        props.closeRegistrationView(false);
+        props.toggleRegistrationView(false);
     };
     return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("form", {
         children: [
