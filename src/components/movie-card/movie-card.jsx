@@ -1,30 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button, Card, Row, Col } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import "../../index.scss";
 
 export class MovieCard extends React.Component {
   render() {
     const { movie, onMovieClick } = this.props;
     return (
-      <Row>
-        <Col className="card-col">
-          <Card className="card-container">
-            <Card.Img variant="top" src={movie.ImagePath} />
-            <Card.Body>
-              <Card.Title>{movie.Title}</Card.Title>
-              <Card.Text>{movie.Genre.Name}</Card.Text>
-              <Button
-                variant="custom"
-                className="mx-auto d-block custom-btn"
-                onClick={() => onMovieClick(movie)}
-              >
-                Open
-              </Button>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
+      <Card className="card-container">
+        <Card.Img variant="top" src={movie.ImagePath} />
+        <Card.Body>
+          <Card.Title>{movie.Title}</Card.Title>
+          <Card.Text>{movie.Genre.Name}</Card.Text>
+          <Button
+            variant="custom"
+            className="mx-auto d-block custom-btn"
+            onClick={() => onMovieClick(movie)}
+          >
+            Open
+          </Button>
+        </Card.Body>
+      </Card>
     );
   }
 }
