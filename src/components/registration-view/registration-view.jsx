@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Form, Button, Card, CardGroup, Container, Col, Row } from 'react-bootstrap';
+import { Form, Button, Card, CardGroup } from 'react-bootstrap';
+import '../../index.scss';
 
 export function RegistrationView(props) {
     const [newUsername, setUsername] = useState('');
@@ -14,11 +15,11 @@ export function RegistrationView(props) {
     
 
     return (
-        <Container>
-            <Row>
-                <Col>
+        
+            
+                
                     <CardGroup>
-                        <Card style={{ width: '18rem' }}>
+                        <Card>
                             <Card.Body>
                             <Card.Title>Please register here</Card.Title>
                         <Form>
@@ -28,27 +29,25 @@ export function RegistrationView(props) {
             </Form.Group>
             
             <Form.Group>
-            <Form.Label>Password: </Form.Label>
+            <Form.Label className='mt-2'>Password: </Form.Label>
                 <Form.Control type='text' placeholder='Enter a password' value={password} onChange={e => setPassword(e.target.value)} required minLength='8'/>
             </Form.Group>
 
             <Form.Group>
-            <Form.Label>Email: </Form.Label>
+            <Form.Label className='mt-2'>Email: </Form.Label>
                 <Form.Control type='text' placeholder='Enter a valid email' value={email} onChange={e => setEmail(e.target.value)} required/>
             </Form.Group>
 
             <Form.Group>
-            <Form.Label>Birthdate: </Form.Label>
+            <Form.Label className='mt-2'>Birthdate: </Form.Label>
                 <Form.Control type='text' placeholder='Enter your birthdate' value={birthdate} onChange={e => setBirthdate(e.target.value)} required/>
             </Form.Group>
 
-            <Button variant='primary' type='submit' onClick={handleRegistrationBtn}>Submit</Button>
+            <Button className='mt-3' variant='primary' type='submit' onClick={handleRegistrationBtn}>Submit</Button>
                                 </Form>
                            </Card.Body>
                         </Card>
                     </CardGroup>
-                </Col>
-            </Row>
-        </Container>  
+                
 );
     }
