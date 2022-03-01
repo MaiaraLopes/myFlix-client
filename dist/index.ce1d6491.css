@@ -2,14 +2,11 @@
 * {
   font-family: "Josefin Sans", sans-serif;
 }
-.custom-button {
-  background-color: #ffa69e;
-}
 .label {
-  font-size: 28px;
+  font-size: 24px;
 }
 .value {
-  font-size: 24px;
+  font-size: 20px;
 }
 .movie-title,
 .movie-description {
@@ -18,7 +15,38 @@
   padding: 10px;
   margin: 10px;
 }
+.movie-image {
+  max-width: 250px;
+}
 .main-view {
   padding-bottom: 10px;
+}
+.card-container {
+  height: 100%;
+}
+.card-col {
+  margin: 15px;
+}
+.btn.custom-btn {
+  color: #5e6472;
+  background-color: #aed9e0;
+  border: solid #aed9e0;
+}
+.btn.custom-btn:hover,
+.btn.custom-btn:active {
+  background-color: #ffcfcb;
+  border: solid #ffcfcb;
+  color: #5e6472;
+}
+.btn.custom-btn-2 {
+  background-color: #ffcfcb;
+  border: solid #ffcfcb;
+  color: #5e6472;
+}
+.btn.custom-btn-2:hover,
+.btn.custom-btn-2:active {
+  color: #5e6472;
+  background-color: #aed9e0;
+  border: solid #aed9e0;
 }
 /*# sourceMappingURL=index.ce1d6491.css.map */

@@ -1,38 +1,47 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Button, Card } from 'react-bootstrap';
-import '../../index.scss';
-
+import React from "react";
+import PropTypes from "prop-types";
+import { Button, Card, Row, Col } from "react-bootstrap";
+import "../../index.scss";
 
 export class MovieCard extends React.Component {
-    render() {
-        const { movie, onMovieClick } = this.props;
-        return (
-            <Card>
-                <Card.Img variant='top' src={movie.ImagePath} />
-                <Card.Body>
-                    <Card.Title>{movie.Title}</Card.Title>
-                    <Card.Text>{movie.Genre.Name}</Card.Text>
-                    <Button onClick={() => onMovieClick(movie)} variant='primary'>Open</Button>
-                </Card.Body>
-            </Card>
-        );
-    }
+  render() {
+    const { movie, onMovieClick } = this.props;
+    return (
+      <Row>
+        <Col className="card-col">
+          <Card className="card-container">
+            <Card.Img variant="top" src={movie.ImagePath} />
+            <Card.Body>
+              <Card.Title>{movie.Title}</Card.Title>
+              <Card.Text>{movie.Genre.Name}</Card.Text>
+              <Button
+                variant="custom"
+                className="mx-auto d-block custom-btn"
+                onClick={() => onMovieClick(movie)}
+              >
+                Open
+              </Button>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    );
+  }
 }
 
 MovieCard.propTypes = {
-    movie: PropTypes.shape({
-        Title: PropTypes.string.isRequired,
-        Description: PropTypes.string.isRequired,
-        ImagePath: PropTypes.string.isRequired,
-        Genre: PropTypes.shape({
-            Name: PropTypes.string.isRequired,
-            Description: PropTypes.string.isRequired
-        }),
-        Director: PropTypes.shape({
-            Name: PropTypes.string.isRequired,
-            Bio: PropTypes.string.isRequired
-        })
-    }).isRequired,
-    onMovieClick: PropTypes.func.isRequired
+  movie: PropTypes.shape({
+    Title: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+    ImagePath: PropTypes.string.isRequired,
+    Genre: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Description: PropTypes.string.isRequired,
+    }),
+    Director: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Bio: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
+  onMovieClick: PropTypes.func.isRequired,
 };
