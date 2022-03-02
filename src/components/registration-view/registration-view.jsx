@@ -15,24 +15,24 @@ export function RegistrationView(props) {
 
   const validate = () => {
     let isReq = true;
-    if (!username) {
+    if (!newUsername) {
       setUsernameErr("Username required");
       isReq = false;
-    } else if (username.length < 2) {
+    } else if (newUsername.length < 2) {
       setUsernameErr("Username must be at least 2 characters long");
       isReq = false;
     }
     if (!password) {
       setPasswordErr("Password required");
       isReq = false;
-    } else if (password.lenght < 6) {
+    } else if (password.length < 6) {
       setPasswordErr("Password must be at least 6 characters long");
       isReq = false;
     }
     if (!email) {
       setEmailErr("Email required");
       isReq = false;
-    } else if (indexOf("@" === -1)) {
+    } else if (!indexOf("@" === -1)) {
       setEmailErr("Enter a valid email");
       isReq = false;
     }
@@ -54,8 +54,7 @@ export function RegistrationView(props) {
           Email: email,
           Birthdate: birthdate,
         })
-        .then((response) => {
-          const data = response.data;
+        .then(() => {
           props.toggleRegistrationView(false);
         });
     }
@@ -87,7 +86,6 @@ export function RegistrationView(props) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                minLength="6"
               />
               {passwordErr && <p>{passwordErr}</p>}
             </Form.Group>
