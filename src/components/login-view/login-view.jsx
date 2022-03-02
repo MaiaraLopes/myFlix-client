@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button, Card, CardGroup } from "react-bootstrap";
+import axios from "axios";
 
 export function LoginView(props) {
   const [username, setUsername] = useState("");
@@ -7,8 +8,20 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password);
-    props.onLoggedIn(username);
+    console.log(username);
+    //Send a request to the server for authentication
+    axios
+      .post(
+        `https://myflix-ml.herokuapp.com/login?Username=${username}&Password=${password}`,
+        {}
+      )
+      .then((response) => {
+        const data = response.data;
+        props.onLoggedIn(data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   };
 
   const handleRegisterBtn = (e) => {
@@ -20,7 +33,7 @@ export function LoginView(props) {
     <CardGroup>
       <Card>
         <Card.Body>
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formUsername">
               <Form.Label className="mt-2">Username:</Form.Label>
               <Form.Control
