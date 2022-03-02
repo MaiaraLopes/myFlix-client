@@ -33,16 +33,46 @@ class MainView extends React.Component {
       });
   }
 
+  componentDidMount() {
+    let accessToken = localStorage.getItem("token");
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem("user"),
+      });
+      this.getMovies(accessToken);
+    }
+  }
+
   setSelectedMovie(movie) {
     this.setState({
       selectedMovie: movie,
     });
   }
 
-  onLoggedIn(user) {
+  onLoggedIn(authData) {
+    console.log(authData);
     this.setState({
-      user,
+      user: authData.user.Username,
     });
+
+    localStorage.setItem("token", authData.token);
+    localStorage.setItem("user", authData.user.Username);
+    this.getMovies(authData.token);
+  }
+
+  getMovies(token) {
+    axios
+      .get("https://myflix-ml.herokuapp.com/movies", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        this.setState({
+          movies: response.data,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   toggleRegistrationView = (value) => {
@@ -50,6 +80,14 @@ class MainView extends React.Component {
       openRegistrationView: value,
     });
   };
+
+  onLoggedOut() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    this.setState({
+      user: null,
+    });
+  }
 
   render() {
     const { movies, selectedMovie, user, openRegistrationView } = this.state;
@@ -78,6 +116,14 @@ class MainView extends React.Component {
       );
 
     if (movies.length === 0) return <div className="main-view" />;
+
+    <button
+      onClick={() => {
+        this.onLoggedOut();
+      }}
+    >
+      Logout
+    </button>;
 
     return (
       <Row className="main-view justify-content-md-center mt-4 mb-4">
