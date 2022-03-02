@@ -1,3 +1,4 @@
+import { indexOf } from "lodash";
 import React, { useState } from "react";
 import { Form, Button, Card, CardGroup } from "react-bootstrap";
 import "../../index.scss";
@@ -7,10 +8,57 @@ export function RegistrationView(props) {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthdate, setBirthdate] = useState("");
+  const [usernameErr, setUsernameErr] = useState("");
+  const [passwordErr, setPasswordErr] = useState("");
+  const [emailErr, setEmailErr] = useState("");
+  const [birthdateErr, setBirthdateErr] = useState("");
+
+  const validate = () => {
+    let isReq = true;
+    if (!username) {
+      setUsernameErr("Username required");
+      isReq = false;
+    } else if (username.length < 2) {
+      setUsernameErr("Username must be at least 2 characters long");
+      isReq = false;
+    }
+    if (!password) {
+      setPasswordErr("Password required");
+      isReq = false;
+    } else if (password.lenght < 6) {
+      setPasswordErr("Password must be at least 6 characters long");
+      isReq = false;
+    }
+    if (!email) {
+      setEmailErr("Email required");
+      isReq = false;
+    } else if (indexOf("@" === -1)) {
+      setEmailErr("Enter a valid email");
+      isReq = false;
+    }
+    if (!birthdate) {
+      setBirthdateErr("Birthdate required");
+      isReq = false;
+    }
+    return isReq;
+  };
 
   const handleRegistrationBtn = (e) => {
     e.preventDefault();
-    props.toggleRegistrationView(false);
+    const isReq = validate();
+    if (isReq) {
+      axios
+        .post("https://myflix-ml.herokuapp.com/users", {
+          Username: username,
+          Password: password,
+          Email: email,
+          Birthdate: birthdate,
+        })
+        .then((response) => {
+          const data = response.data;
+          props.toggleRegistrationView(false);
+        });
+    }
   };
 
   return (
@@ -28,6 +76,7 @@ export function RegistrationView(props) {
                 onChange={(e) => setUsername(e.target.value)}
                 required
               />
+              {usernameErr && <p>{usernameErr}</p>}
             </Form.Group>
 
             <Form.Group>
@@ -38,8 +87,9 @@ export function RegistrationView(props) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                minLength="8"
+                minLength="6"
               />
+              {passwordErr && <p>{passwordErr}</p>}
             </Form.Group>
 
             <Form.Group>
@@ -51,6 +101,7 @@ export function RegistrationView(props) {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
+              {emailErr && <p>{emailErr}</p>}
             </Form.Group>
 
             <Form.Group>
@@ -62,6 +113,7 @@ export function RegistrationView(props) {
                 onChange={(e) => setBirthdate(e.target.value)}
                 required
               />
+              {birthdateErr && <p>{birthdateErr}</p>}
             </Form.Group>
 
             <Button
