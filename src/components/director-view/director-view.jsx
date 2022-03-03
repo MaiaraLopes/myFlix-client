@@ -1,9 +1,8 @@
 import React from "react";
 import { Button, Card, CardGroup } from "react-bootstrap";
 import "../../index.scss";
-import { Link } from "react-router-dom";
 
-export class MovieView extends React.Component {
+export class DirectorView extends React.Component {
   render() {
     const { movie, onBackClick } = this.props;
 
@@ -18,25 +17,19 @@ export class MovieView extends React.Component {
                   src={movie.ImagePath}
                 />
               </div>
-              <div className="movie-title">
-                <span className="label">Title: </span>
-                <span className="value">{movie.Title}</span>
+              <div className="movie-director">
+                <span className="label">Name: </span>
+                <span className="value">{movie.Director.Name}</span>
               </div>
-              <div className="movie-description">
-                <span className="label">Description: </span>
-                <span className="value">{movie.Description}</span>
+              <div className="director-bio">
+                <span className="label">Bio:</span>
+                <span className="value">{movie.Director.Bio}</span>
               </div>
-              <Link to={`/director/${movie.Director.Name}`}>
-                <Button variant="link">Director</Button>
-              </Link>
-              <Link to={`genre/${movie.Genre.Name}`}>
-                <Button variant="link">Genre</Button>
-              </Link>
               <Button
-                className="mt-3 custom-btn-2"
+                className="custom-btn-2"
                 variant="custom"
                 onClick={() => {
-                  onBackClick(null);
+                  onBackClick();
                 }}
               >
                 Back

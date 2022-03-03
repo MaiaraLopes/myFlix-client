@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export class MovieCard extends React.Component {
   render() {
-    const { movie, onMovieClick } = this.props;
+    const { movie } = this.props;
     return (
       <Card className="card-container">
         <Card.Img variant="top" src={movie.ImagePath} />
@@ -14,11 +14,7 @@ export class MovieCard extends React.Component {
           <Card.Title>{movie.Title}</Card.Title>
           <Card.Text>{movie.Genre.Name}</Card.Text>
           <Link to={`/movies/${movie._id}`}>
-            <Button
-              variant="custom"
-              className="mx-auto d-block custom-btn"
-              onClick={() => onMovieClick(movie)}
-            >
+            <Button variant="custom" className="mx-auto d-block custom-btn">
               Open
             </Button>
           </Link>
