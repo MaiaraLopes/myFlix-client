@@ -2,6 +2,7 @@ import { indexOf } from "lodash";
 import React, { useState } from "react";
 import { Form, Button, Card, CardGroup } from "react-bootstrap";
 import "../../index.scss";
+import axios from "axios";
 
 export function RegistrationView(props) {
   const [newUsername, setUsername] = useState("");
@@ -48,12 +49,16 @@ export function RegistrationView(props) {
     const isReq = validate();
     if (isReq) {
       axios
-        .post("https://myflix-ml.herokuapp.com/users", {
-          Username: username,
-          Password: password,
-          Email: email,
-          Birthdate: birthdate,
-        })
+        .put(
+          "https://myflix-ml.herokuapp.com/users",
+          {
+            Username: newUsername,
+            Password: password,
+            Email: email,
+            Birthdate: birthdate,
+          },
+          "token"
+        )
         .then(() => {
           props.toggleRegistrationView(false);
         });

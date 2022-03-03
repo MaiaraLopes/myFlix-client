@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import "../../index.scss";
 
 import { LoginView } from "../login-view/login-view";
@@ -117,16 +117,19 @@ class MainView extends React.Component {
 
     if (movies.length === 0) return <div className="main-view" />;
 
-    <button
-      onClick={() => {
-        this.onLoggedOut();
-      }}
-    >
-      Logout
-    </button>;
-
     return (
       <Row className="main-view justify-content-md-center mt-4 mb-4">
+        <Col md={12}>
+          <Button
+            className="custom-btn-2 mb-3 float-right"
+            onClick={() => {
+              this.onLoggedOut();
+            }}
+          >
+            Logout
+          </Button>
+        </Col>
+
         {selectedMovie ? (
           <Col md={8}>
             <MovieView
