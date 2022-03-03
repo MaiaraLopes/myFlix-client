@@ -23,19 +23,6 @@ class MainView extends React.Component {
   }
 
   componentDidMount() {
-    axios
-      .get("https://myflix-ml.herokuapp.com/movies")
-      .then((response) => {
-        this.setState({
-          movies: response.data,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  componentDidMount() {
     let accessToken = localStorage.getItem("token");
     if (accessToken !== null) {
       this.setState({
@@ -138,7 +125,11 @@ class MainView extends React.Component {
             exact
             path="/"
             render={() => {
-              return movies.map((m) => <Col md={3} key={m._id}></Col>);
+              return movies.map((m) => (
+                <Col md={3} key={m._id}>
+                  <MovieCard movie={m} />
+                </Col>
+              ));
             }}
           />
           <Route
