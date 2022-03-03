@@ -48,8 +48,9 @@ export function RegistrationView(props) {
     e.preventDefault();
     const isReq = validate();
     if (isReq) {
+      let token = localStorage.getItem("token");
       axios
-        .put(
+        .post(
           "https://myflix-ml.herokuapp.com/users",
           {
             Username: newUsername,
@@ -57,7 +58,9 @@ export function RegistrationView(props) {
             Email: email,
             Birthdate: birthdate,
           },
-          "token"
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
         )
         .then(() => {
           props.toggleRegistrationView(false);
