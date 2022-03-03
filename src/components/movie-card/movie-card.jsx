@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
 import "../../index.scss";
+import { Link } from "react-router-dom";
 
 export class MovieCard extends React.Component {
   render() {
@@ -12,13 +13,15 @@ export class MovieCard extends React.Component {
         <Card.Body>
           <Card.Title>{movie.Title}</Card.Title>
           <Card.Text>{movie.Genre.Name}</Card.Text>
-          <Button
-            variant="custom"
-            className="mx-auto d-block custom-btn"
-            onClick={() => onMovieClick(movie)}
-          >
-            Open
-          </Button>
+          <Link to={`/movies/${movie._id}`}>
+            <Button
+              variant="custom"
+              className="mx-auto d-block custom-btn"
+              onClick={() => onMovieClick(movie)}
+            >
+              Open
+            </Button>
+          </Link>
         </Card.Body>
       </Card>
     );
