@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
 import { Row, Col, Button } from "react-bootstrap";
-import "../../index.scss";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import "../../index.scss";
 
 import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
@@ -126,7 +126,7 @@ class MainView extends React.Component {
             path="/"
             render={() => {
               return movies.map((m) => (
-                <Col md={3} key={m._id}>
+                <Col md={3} key={m._id} className="card-col">
                   <MovieCard movie={m} />
                 </Col>
               ));

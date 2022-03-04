@@ -22801,8 +22801,8 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _reactBootstrap = require("react-bootstrap");
-var _indexScss = require("../../index.scss");
 var _reactRouterDom = require("react-router-dom");
+var _indexScss = require("../../index.scss");
 var _loginView = require("../login-view/login-view");
 var _movieCard = require("../movie-card/movie-card");
 var _movieView = require("../movie-view/movie-view");
@@ -22948,6 +22948,7 @@ class MainView extends _reactDefault.default.Component {
                         render: ()=>{
                             return movies.map((m)=>/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Col, {
                                     md: 3,
+                                    className: "card-col",
                                     children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_movieCard.MovieCard, {
                                         movie: m
                                     }, void 0, false, void 0, void 0)
@@ -33802,7 +33803,7 @@ MovieCard.propTypes = {
             Bio: _propTypesDefault.default.string.isRequired
         })
     }).isRequired,
-    onMovieClick: _propTypesDefault.default.func.isRequired
+    onMovieClick: _propTypesDefault.default.func
 };
 
   $parcel$ReactRefreshHelpers$67b2.postlude(module);
