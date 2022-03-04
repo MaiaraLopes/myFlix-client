@@ -3,8 +3,7 @@ import { Navbar, Container, Nav, Button } from "react-bootstrap";
 
 export function Navbar({ user }) {
   const onLoggedOut = () => {
-    localStorage.clear();
-    window.open("/", "_self");
+    return localStorage.clear();
   };
 
   const isAuth = () => {
@@ -23,12 +22,12 @@ export function Navbar({ user }) {
       <Container>
         <Navbar.Brand href="#home">myFlix</Navbar.Brand>
         <Nav className="me-auto">
-          {isAuth() && <Nav.Link href={`/users/${user}`}>Profile</Nav.Link>}
+          {isAuth() && <Nav.Link href={`/users/${user}`}>{user}</Nav.Link>}
           {isAuth() && (
             <Button
               variant="link"
               onClick={() => {
-                this.onLoggedOut();
+                onLoggedOut();
               }}
             >
               Logout

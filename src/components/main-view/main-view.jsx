@@ -108,7 +108,7 @@ class MainView extends React.Component {
 
     return (
       <Router>
-        {/*<Navbar user={user}/>*/}
+        <Navbar user={user} />
         <Row className="main-view justify-content-md-center mt-4 mb-4">
           <Col md={12}>
             <Button
@@ -144,12 +144,12 @@ class MainView extends React.Component {
             }}
           />
           <Route
-            path="/movies/:movieId"
+            path="/movies/:MovieID"
             render={({ match, history }) => {
               return (
                 <Col md={8}>
                   <MovieView
-                    movie={movies.find((m) => m._id === match.params.movieId)}
+                    movie={movies.find((m) => m._id === match.params.id)}
                     onBackClick={() => history.goBack()}
                   />
                 </Col>
@@ -157,7 +157,7 @@ class MainView extends React.Component {
             }}
           />
           <Route
-            path="/director/:name"
+            path="movies/Director/:Name"
             render={({ match, history }) => {
               if (movies.length === 0) return <div className="main-view" />;
               return (
@@ -183,6 +183,21 @@ class MainView extends React.Component {
                       movies.find((m) => m.Genre.Name === match.params.name)
                         .Genre
                     }
+                    onBackClick={() => history.goBack()}
+                  />
+                </Col>
+              );
+            }}
+          />
+          <Route
+            path={`/users/${user}`}
+            render={({ match, history }) => {
+              if (!user) return <Redirect to="/" />;
+              return (
+                <Col>
+                  <ProfileView
+                    movies={movies}
+                    user={user}
                     onBackClick={() => history.goBack()}
                   />
                 </Col>
