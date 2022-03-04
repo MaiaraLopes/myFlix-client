@@ -70,13 +70,13 @@ class MainView extends React.Component {
     });
   };
 
-  onLoggedOut() {
+  onLoggedOut = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     this.setState({
       user: null,
     });
-  }
+  };
 
   render() {
     const { movies, selectedMovie, user, openRegistrationView } = this.state;
@@ -108,7 +108,7 @@ class MainView extends React.Component {
 
     return (
       <Router>
-        <Navbar user={user} />
+        <Navbar user={user} onLoggedOut={"user"} />
         <Row className="main-view justify-content-md-center mt-4 mb-4">
           <Col md={12}>
             <Button

@@ -9,7 +9,13 @@ export function Navbar({ user }) {
         <Nav className="me-auto">
           <Nav.Link href="#">Sign in</Nav.Link>
           <Nav.Link href="#">Register</Nav.Link>
-          <Button>Sign out</Button>
+          <Button
+            onClick={() => {
+              onLoggedOut();
+            }}
+          >
+            Sign out
+          </Button>
         </Nav>
       </Container>
     </Navbar>
