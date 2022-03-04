@@ -1,21 +1,25 @@
 import React from "react";
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
 
-export function Navbar({ user, onLoggedOut }) {
+export function Navbar({ onLoggedOut }) {
+  let token = localStorage("token");
+
   return (
     <Navbar bg="light" variant="light">
       <Container>
         <Navbar.Brand href="#">myFlix</Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link href="#">Sign in</Nav.Link>
+          {!token ? <Nav.Link href="#">Sign in</Nav.Link> : null}
           <Nav.Link href="#">Register</Nav.Link>
-          <Button
-            onClick={() => {
-              onLoggedOut();
-            }}
-          >
-            Sign out
-          </Button>
+          {token ? (
+            <Button
+              onClick={() => {
+                onLoggedOut();
+              }}
+            >
+              Sign out
+            </Button>
+          ) : null}
         </Nav>
       </Container>
     </Navbar>
