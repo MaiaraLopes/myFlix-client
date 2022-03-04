@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
 
-export function Navbar({ user }) {
+export function Navbar({ user, onLoggedOut }) {
   return (
     <Navbar bg="light" variant="light">
       <Container>
