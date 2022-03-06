@@ -9,7 +9,7 @@ export function Navbar({ user, onLoggedOut }) {
       <Container>
         <Navbar.Brand href="#">myFlix</Navbar.Brand>
         <Nav className="me-auto">
-          {/*{!token ? <Nav.Link href="#">Sign in</Nav.Link> : null}*/}
+          {!token ? <Nav.Link href="#">Sign in</Nav.Link> : null}
           <Nav.Link href={`/users/${user}`}>{user}</Nav.Link>
           <Nav.Link href="#">Favorites</Nav.Link>
           {token ? (
