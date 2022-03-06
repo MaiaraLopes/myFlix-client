@@ -62,8 +62,10 @@ export function RegistrationView(props) {
             headers: { Authorization: `Bearer ${token}` },
           }
         )
-        .then(() => {
-          props.toggleRegistrationView(false);
+        .then((response) => {
+          const data = response.data;
+          console.log(data);
+          window.open("/", "_self");
         })
         .catch((e) => {
           console.log("Error registering user");
