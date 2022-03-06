@@ -64,6 +64,9 @@ export function RegistrationView(props) {
         )
         .then(() => {
           props.toggleRegistrationView(false);
+        })
+        .catch((e) => {
+          console.log("Error registering user");
         });
     }
   };

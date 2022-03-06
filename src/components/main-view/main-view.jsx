@@ -79,7 +79,7 @@ class MainView extends React.Component {
   };
 
   render() {
-    const { movies, selectedMovie, user, openRegistrationView } = this.state;
+    const { movies, user, openRegistrationView } = this.state;
 
     if (openRegistrationView)
       return (
