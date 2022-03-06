@@ -110,17 +110,6 @@ class MainView extends React.Component {
       <Router>
         <Navbar user={user} onLoggedOut={this.onLoggedOut} />
         <Row className="main-view justify-content-md-center mt-4 mb-4">
-          <Col md={12}>
-            <Button
-              className="custom-btn-2 mb-3 float-right"
-              onClick={() => {
-                this.onLoggedOut();
-              }}
-            >
-              Logout
-            </Button>
-          </Col>
-
           <Route
             exact
             path="/"
