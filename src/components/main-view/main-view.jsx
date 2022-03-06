@@ -94,11 +94,7 @@ class MainView extends React.Component {
 
     return (
       <Router>
-        <Navbar
-          user={user}
-          onLoggedOut={this.onLoggedOut}
-          onLoggedIn={this.onLoggedIn}
-        />
+        <Navbar user={user} onLoggedOut={this.onLoggedOut} />
 
         <Row className="main-view justify-content-md-center mt-4 mb-4">
           <Route

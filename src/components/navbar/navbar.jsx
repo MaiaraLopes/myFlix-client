@@ -10,6 +10,7 @@ export function Navbar({ user, onLoggedOut }) {
         <Navbar.Brand href="#">myFlix</Navbar.Brand>
         <Nav className="me-auto">
           {!token ? <Button className="custom-btn-2">Sign in</Button> : null}
+          <Nav.Link href={"/register"}>Register</Nav.Link>
           <Nav.Link href={`/users/${user}`}>{user}</Nav.Link>
           {token ? (
             <Button
