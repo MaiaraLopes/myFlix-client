@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Row, Col, Button } from "react-bootstrap";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import "../../index.scss";
 
 import { LoginView } from "../login-view/login-view";
@@ -101,10 +101,12 @@ class MainView extends React.Component {
             exact
             path="/"
             render={() => {
-              if (!user) return;
-              <Col md={6}>
-                <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
-              </Col>;
+              if (!user)
+                return (
+                  <Col md={6}>
+                    <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+                  </Col>
+                );
               if (movies.length === 0) return <div className="main-view" />;
               return movies.map((m) => (
                 <Col md={3} key={m._id} className="card-col">
@@ -121,6 +123,21 @@ class MainView extends React.Component {
               return (
                 <Col lg={8} md={8}>
                   <RegistrationView />
+                </Col>
+              );
+            }}
+          />
+
+          <Route
+            path={`/users/${user}`}
+            render={({ history }) => {
+              if (!user) return <Redirect to="/" />;
+              return (
+                <Col>
+                  <ProfileView
+                    user={user}
+                    onBackClick={() => history.goBack()}
+                  />{" "}
                 </Col>
               );
             }}
