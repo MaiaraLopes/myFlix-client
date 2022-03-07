@@ -18,6 +18,7 @@ class MainView extends React.Component {
     this.state = {
       movies: [],
       user: null,
+      userData: null,
     };
   }
 
@@ -35,6 +36,7 @@ class MainView extends React.Component {
     console.log(authData);
     this.setState({
       user: authData.user.Username,
+      userData: authData.user,
     });
 
     localStorage.setItem("token", authData.token);
@@ -72,7 +74,7 @@ class MainView extends React.Component {
   };
 
   render() {
-    const { movies, user } = this.state;
+    const { movies, user, userData } = this.state;
 
     if (movies.length === 0 && user) return <div className="main-view" />;
 
@@ -117,7 +119,7 @@ class MainView extends React.Component {
               if (!user) return <Redirect to="/" />;
               return (
                 <Col>
-                  <ProfileView />
+                  <ProfileView oldUserData={userData} />
                 </Col>
               );
             }}

@@ -24,11 +24,6 @@ export function LoginView(props) {
       });
   };
 
-  const handleRegisterBtn = (e) => {
-    e.preventDefault();
-    props.toggleRegistrationView(true);
-  };
-
   return (
     <CardGroup>
       <Card>
@@ -56,14 +51,6 @@ export function LoginView(props) {
               onClick={handleSubmit}
             >
               Submit
-            </Button>
-            <Button
-              className="mt-3 custom-btn-2"
-              variant="custom"
-              type="submit"
-              onClick={handleRegisterBtn}
-            >
-              Register here
             </Button>
           </Form>
         </Card.Body>
