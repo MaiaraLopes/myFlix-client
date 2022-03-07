@@ -31,12 +31,6 @@ class MainView extends React.Component {
     }
   }
 
-  setSelectedMovie(movie) {
-    this.setState({
-      selectedMovie: movie,
-    });
-  }
-
   onLoggedIn(authData) {
     console.log(authData);
     this.setState({
