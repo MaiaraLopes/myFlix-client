@@ -1,13 +1,39 @@
 import React, { useState } from "react";
 import { Card, CardGroup, Button, Form } from "react-bootstrap";
+import axios from "axios";
 
-export function ProfileView({ oldUserData, onBackClick }) {
+export function ProfileView({ oldUserData, onBackClick, updateUser }) {
   const [newUsername, setNewUsername] = useState(oldUserData.Username);
   const [newPassword, setNewPassword] = useState("");
   const [newEmail, setNewEmail] = useState(oldUserData.Email);
   const [newBirthdate, setNewBirthdate] = useState(
     oldUserData.Birthdate.substring(0, 10)
   );
+
+  let token = localStorage.getItem("token");
+
+  const handleUpdateBtn = () => {
+    axios
+      .put(
+        "https://myflix-ml.herokuapp.com/users/${user}",
+        {
+          Username: newUsername,
+          Password: newPassword,
+          Email: newEmail,
+          Birthdate: newBirthdate,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((response) => {
+        const data = response.data;
+        props.updateUser(data);
+      })
+      .catch((e) => {
+        console.log("Error updating user");
+      });
+  };
 
   return (
     <CardGroup>
@@ -66,6 +92,20 @@ export function ProfileView({ oldUserData, onBackClick }) {
               }}
             >
               Back
+            </Button>
+
+            <Button
+              className="mt-3 ml-2 custom-btn"
+              variant="custom"
+              onClick={() => {
+                handleUpdateBtn();
+              }}
+            >
+              Update
+            </Button>
+
+            <Button className="mt-3 ml-2 custom-btn-2" variant="custom">
+              Delete
             </Button>
           </Form>
         </Card.Body>

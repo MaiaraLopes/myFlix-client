@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { Row, Col, Button } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import "../../index.scss";
 
@@ -43,6 +43,8 @@ class MainView extends React.Component {
     localStorage.setItem("token", authData.token);
     localStorage.setItem("user", authData.user.Username);
     localStorage.setItem("userData", JSON.stringify(authData.user));
+    localStorage.setItem("user", newUserData.Username);
+    localStorage.setItem("userData", JSON.stringify(newUserData));
     this.getMovies(authData.token);
   }
 
@@ -61,12 +63,6 @@ class MainView extends React.Component {
       });
   }
 
-  toggleRegistrationView = (value) => {
-    this.setState({
-      openRegistrationView: value,
-    });
-  };
-
   onLoggedOut = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -74,6 +70,13 @@ class MainView extends React.Component {
       user: null,
     });
   };
+
+  updateUser(newUserData) {
+    this.setState({
+      user: newUserData.Username,
+      userData: newUserData,
+    });
+  }
 
   render() {
     const { movies, user, userData } = this.state;
@@ -123,8 +126,9 @@ class MainView extends React.Component {
                 <Col>
                   <ProfileView
                     oldUserData={userData}
+                    updateUser={(newUserData) => this.updateUser(newUserData)}
                     onBackClick={() => {
-                      history.goBack;
+                      history.goBack();
                     }}
                   />
                 </Col>
