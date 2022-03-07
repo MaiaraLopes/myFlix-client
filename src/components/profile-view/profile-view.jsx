@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { Card, CardGroup, Button, Form } from "react-bootstrap";
-import axios from "axios";
 
-export function ProfileView({ oldUserData }) {
-  const [newUserName, setNewUserName] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [newEmail, setNewEmail] = useState("");
-  const [newBirthdate, setNewBirthdate] = useState("");
+export function ProfileView({ oldUserData, onBackClick }) {
+  const [newUsername, setNewUsername] = useState(oldUserData.Username);
+  const [newPassword, setNewPassword] = useState(oldUserData.Password);
+  const [newEmail, setNewEmail] = useState(oldUserData.Email);
+  const [newBirthdate, setNewBirthdate] = useState(oldUserData.Birthdate);
 
   return (
     <CardGroup>
@@ -15,16 +14,57 @@ export function ProfileView({ oldUserData }) {
           <Form>
             <Form.Group>
               <Form.Label>Username: </Form.Label>
+              <Form.Control
+                type="text"
+                value={newUsername}
+                onChange={(e) => {
+                  setNewUsername(e.target.value);
+                }}
+              />
             </Form.Group>
+
             <Form.Group>
               <Form.Label>Password: </Form.Label>
+              <Form.Control
+                type="text"
+                value={newPassword}
+                onChange={(e) => {
+                  setNewPassword(e.target.value);
+                }}
+              />
             </Form.Group>
+
             <Form.Group>
               <Form.Label>Email: </Form.Label>
+              <Form.Control
+                type="text"
+                value={newEmail}
+                onChange={(e) => {
+                  setNewEmail(e.target.value);
+                }}
+              />
             </Form.Group>
+
             <Form.Group>
-              <Form.Label>Birthdate: </Form.Label>{" "}
+              <Form.Label>Birthdate: </Form.Label>
+              <Form.Control
+                type="text"
+                value={newBirthdate}
+                onChange={(e) => {
+                  setNewBirthdate(e.target.value);
+                }}
+              />
             </Form.Group>
+
+            <Button
+              className="mt-3 custom-btn-2"
+              variant="custom"
+              onClick={() => {
+                onBackClick();
+              }}
+            >
+              Back
+            </Button>
           </Form>
         </Card.Body>
       </Card>
