@@ -74,7 +74,7 @@ class MainView extends React.Component {
   render() {
     const { movies, user } = this.state;
 
-    if (movies.length === 0) return <div className="main-view" />;
+    if (movies.length === 0 && user) return <div className="main-view" />;
 
     return (
       <Router>

@@ -9,9 +9,9 @@ export function Navbar({ user, onLoggedOut }) {
       <Container>
         <Navbar.Brand href="#">myFlix</Navbar.Brand>
         <Nav className="me-auto">
-          {!token ? <Button className="custom-btn-2">Sign in</Button> : null}
-          <Nav.Link href={"/register"}>Register</Nav.Link>
-          <Nav.Link href={`/users/${user}`}>{user}</Nav.Link>
+          {!token ? <Nav.Link href="/">Sign in</Nav.Link> : null}
+          {!token ? <Nav.Link href={"/register"}>Register</Nav.Link> : null}
+          {!token ? null : <Nav.Link href={`/users/${user}`}>{user}</Nav.Link>}
           {token ? (
             <Button
               className="custom-btn-2"
