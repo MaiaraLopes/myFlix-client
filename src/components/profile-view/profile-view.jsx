@@ -3,9 +3,11 @@ import { Card, CardGroup, Button, Form } from "react-bootstrap";
 
 export function ProfileView({ oldUserData, onBackClick }) {
   const [newUsername, setNewUsername] = useState(oldUserData.Username);
-  const [newPassword, setNewPassword] = useState(oldUserData.Password);
+  const [newPassword, setNewPassword] = useState("");
   const [newEmail, setNewEmail] = useState(oldUserData.Email);
-  const [newBirthdate, setNewBirthdate] = useState(oldUserData.Birthdate);
+  const [newBirthdate, setNewBirthdate] = useState(
+    oldUserData.Birthdate.substring(0, 10)
+  );
 
   return (
     <CardGroup>
@@ -13,7 +15,7 @@ export function ProfileView({ oldUserData, onBackClick }) {
         <Card.Body>
           <Form>
             <Form.Group>
-              <Form.Label>Username: </Form.Label>
+              <Form.Label className="mt-2">Username: </Form.Label>
               <Form.Control
                 type="text"
                 value={newUsername}
@@ -24,7 +26,7 @@ export function ProfileView({ oldUserData, onBackClick }) {
             </Form.Group>
 
             <Form.Group>
-              <Form.Label>Password: </Form.Label>
+              <Form.Label className="mt-2">Password: </Form.Label>
               <Form.Control
                 type="text"
                 value={newPassword}
@@ -35,7 +37,7 @@ export function ProfileView({ oldUserData, onBackClick }) {
             </Form.Group>
 
             <Form.Group>
-              <Form.Label>Email: </Form.Label>
+              <Form.Label className="mt-2">Email: </Form.Label>
               <Form.Control
                 type="text"
                 value={newEmail}
@@ -46,7 +48,7 @@ export function ProfileView({ oldUserData, onBackClick }) {
             </Form.Group>
 
             <Form.Group>
-              <Form.Label>Birthdate: </Form.Label>
+              <Form.Label className="mt-2">Birthdate: </Form.Label>
               <Form.Control
                 type="text"
                 value={newBirthdate}

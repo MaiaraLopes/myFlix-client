@@ -119,7 +119,7 @@ export function RegistrationView(props) {
               <Form.Label className="mt-2">Birthdate: </Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter your birthdate"
+                placeholder="Enter your birthdate (dd/mm/yyyy)"
                 value={birthdate}
                 onChange={(e) => setBirthdate(e.target.value)}
                 required
