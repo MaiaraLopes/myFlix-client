@@ -9,6 +9,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { RegistrationView } from "../registration-view/registration-view";
 import { Navbar } from "../navbar/navbar";
+import { ProfileView } from "../profile-view/profile-view";
 
 class MainView extends React.Component {
   constructor() {
@@ -130,14 +131,11 @@ class MainView extends React.Component {
 
           <Route
             path={`/users/${user}`}
-            render={({ history }) => {
+            render={() => {
               if (!user) return <Redirect to="/" />;
               return (
                 <Col>
-                  <ProfileView
-                    user={user}
-                    onBackClick={() => history.goBack()}
-                  />{" "}
+                  <ProfileView />
                 </Col>
               );
             }}
