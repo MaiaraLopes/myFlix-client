@@ -27,6 +27,7 @@ class MainView extends React.Component {
     if (accessToken !== null) {
       this.setState({
         user: localStorage.getItem("user"),
+        userData: JSON.parse(localStorage.getItem("userData")),
       });
       this.getMovies(accessToken);
     }
@@ -41,6 +42,7 @@ class MainView extends React.Component {
 
     localStorage.setItem("token", authData.token);
     localStorage.setItem("user", authData.user.Username);
+    localStorage.setItem("userData", JSON.stringify(authData.user));
     this.getMovies(authData.token);
   }
 
@@ -119,7 +121,12 @@ class MainView extends React.Component {
               if (!user) return <Redirect to="/" />;
               return (
                 <Col>
-                  <ProfileView oldUserData={userData} />
+                  <ProfileView
+                    oldUserData={userData}
+                    onBackClick={() => {
+                      history.goBack;
+                    }}
+                  />
                 </Col>
               );
             }}
