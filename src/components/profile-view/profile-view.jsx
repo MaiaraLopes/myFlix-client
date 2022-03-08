@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Card, CardGroup, Button, Form } from "react-bootstrap";
 import axios from "axios";
+import { indexOf } from "lodash";
 
 export function ProfileView({
   oldUserData,
@@ -14,6 +15,39 @@ export function ProfileView({
   const [newBirthdate, setNewBirthdate] = useState(
     oldUserData.Birthdate.substring(0, 10)
   );
+
+  const [usernameErr, setUsernameErr] = useState("");
+  const [passwordErr, setPasswordErr] = useState("");
+  const [emailErr, setEmailErr] = useState("");
+  const [birthdateErr, setBirthdateErr] = useState("");
+
+  const validate = () => {
+    let isReq = true;
+    if (!newUsername) {
+      setUsernameErr("Username required");
+      isReq = false;
+    } else if (newUsername.length < 2) {
+      setUsernameErr("Username must be at least 2 characters long");
+      isReq = false;
+    }
+    if (!newPassword) {
+      setPasswordErr("Password required");
+      isReq = false;
+    } else if (newPassword.length < 6) {
+      setPasswordErr("Password must be at least 6 characters long");
+      isReq = false;
+    }
+    if (!newEmail) {
+      setEmailErr("Email required");
+    } else if (!indexOf("@ === -1")) {
+      setEmailErr("Enter a valid email");
+      isReq = false;
+    }
+    if (!newBirthdate) {
+      setBirthdateErr("Birthdate required");
+      isReq = false;
+    }
+  };
 
   let token = localStorage.getItem("token");
 
@@ -53,7 +87,6 @@ export function ProfileView({
       .then((response) => {
         const data = response.data;
         onLoggedOut(data);
-        localStorage.removeItem("token");
         window.open("/", "_self");
       })
       .catch((e) => {
@@ -75,6 +108,7 @@ export function ProfileView({
                   setNewUsername(e.target.value);
                 }}
               />
+              {usernameErr && <p>{usernameErr}</p>}
             </Form.Group>
 
             <Form.Group>
@@ -86,6 +120,7 @@ export function ProfileView({
                   setNewPassword(e.target.value);
                 }}
               />
+              {passwordErr && <p>{passwordErr}</p>}
             </Form.Group>
 
             <Form.Group>
@@ -97,6 +132,7 @@ export function ProfileView({
                   setNewEmail(e.target.value);
                 }}
               />
+              {emailErr && <p>{emailErr}</p>}
             </Form.Group>
 
             <Form.Group>
@@ -108,6 +144,7 @@ export function ProfileView({
                   setNewBirthdate(e.target.value);
                 }}
               />
+              {birthdateErr && <p>{birthdateErr}</p>}
             </Form.Group>
 
             <Button
