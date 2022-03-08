@@ -3,11 +3,44 @@ import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
 import "../../index.scss";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export class MovieCard extends React.Component {
   render() {
-    const { movie } = this.props;
+    const { movie, userData, updateUser } = this.props;
 
+    let isFavorite = userData.FavoriteMovies.includes(movie._id);
+    let token = localStorage.getItem("token");
+
+    addFavorite = () => {
+      axios
+        .post(
+          `https://myflix-ml.herokuapp.com/users/${userData.Username}/movies/${movie._id}`,
+          {},
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        )
+        .then((response) => {
+          const data = response.data;
+          this.props.updateUser(data);
+        });
+    };
+
+    deleteFavorite = () => {
+      axios
+        .delete(
+          `https://myflix-ml.herokuapp.com/users/${userData.Username}/movies/${movie._id}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          },
+          {}
+        )
+        .then((response) => {
+          const data = response.data;
+          this.props.updateUser(data);
+        });
+    };
     return (
       <Card className="card-container">
         <Card.Img variant="top" src={movie.ImagePath} />
@@ -18,12 +51,27 @@ export class MovieCard extends React.Component {
             <Button variant="custom" className="custom-btn">
               Open
             </Button>
-            <Button variant="custom" className="float-right custom-btn-2">
-              Add
-            </Button>
-            <Button variant="custom" className="float-right custom-btn-2">
-              Remove
-            </Button>
+            {isFavorite ? (
+              <Button
+                variant="custom"
+                className="float-right custom-btn-2"
+                onClick={() => {
+                  addFavorite();
+                }}
+              >
+                Add
+              </Button>
+            ) : (
+              <Button
+                variant="custom"
+                className="float-right custom-btn-2"
+                onClick={() => {
+                  deleteFavorite();
+                }}
+              >
+                Remove
+              </Button>
+            )}
           </Link>
         </Card.Body>
       </Card>

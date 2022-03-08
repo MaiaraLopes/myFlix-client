@@ -101,7 +101,11 @@ class MainView extends React.Component {
                 );
               return movies.map((m) => (
                 <Col md={3} key={m._id} className="card-col">
-                  <MovieCard movie={m} />
+                  <MovieCard
+                    movie={m}
+                    userData={userData}
+                    updateUser={() => this.updateUser()}
+                  />
                 </Col>
               ));
             }}
