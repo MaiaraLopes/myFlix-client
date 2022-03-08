@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { Card, CardGroup, Button, Form } from "react-bootstrap";
 import axios from "axios";
 
-export function ProfileView({ oldUserData, onBackClick, updateUser }) {
+export function ProfileView({
+  oldUserData,
+  onBackClick,
+  updateUser,
+  onLoggedOut,
+}) {
   const [newUsername, setNewUsername] = useState(oldUserData.Username);
   const [newPassword, setNewPassword] = useState("");
   const [newEmail, setNewEmail] = useState(oldUserData.Email);
@@ -33,6 +38,26 @@ export function ProfileView({ oldUserData, onBackClick, updateUser }) {
       })
       .catch((e) => {
         console.log("Error updating user");
+      });
+  };
+
+  const handleDeleteBtn = () => {
+    axios
+      .delete(
+        `https://myflix-ml.herokuapp.com/users/${oldUserData.Username}`,
+
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((response) => {
+        const data = response.data;
+        onLoggedOut(data);
+        localStorage.removeItem("token");
+        window.open("/", "_self");
+      })
+      .catch((e) => {
+        console.log("Error deleting user");
       });
   };
 
@@ -105,7 +130,13 @@ export function ProfileView({ oldUserData, onBackClick, updateUser }) {
               Update
             </Button>
 
-            <Button className="mt-3 ml-2 custom-btn-2" variant="custom">
+            <Button
+              className="mt-3 ml-2 custom-btn-2"
+              variant="custom"
+              onClick={() => {
+                handleDeleteBtn();
+              }}
+            >
               Delete
             </Button>
           </Form>
