@@ -28,6 +28,7 @@ export function ProfileView({ oldUserData, onBackClick, updateUser }) {
       )
       .then((response) => {
         const data = response.data;
+        updateUser(data);
         window.open("/", "_self");
       })
       .catch((e) => {
