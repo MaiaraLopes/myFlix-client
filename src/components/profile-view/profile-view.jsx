@@ -51,8 +51,7 @@ export function ProfileView({
 
   let token = localStorage.getItem("token");
 
-  const handleUpdateBtn = (e) => {
-    e.preventDefault();
+  const handleUpdateBtn = () => {
     const isReq = validate();
     if (isReq) {
       axios
@@ -163,8 +162,8 @@ export function ProfileView({
             <Button
               className="mt-3 ml-2 custom-btn"
               variant="custom"
-              onClick={(e) => {
-                handleUpdateBtn(e);
+              onClick={() => {
+                handleUpdateBtn();
               }}
             >
               Update
