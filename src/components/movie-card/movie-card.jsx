@@ -15,8 +15,14 @@ export class MovieCard extends React.Component {
           <Card.Title>{movie.Title}</Card.Title>
           <Card.Text>{movie.Genre.Name}</Card.Text>
           <Link className="text-decoration-none" to={`/movies/${movie._id}`}>
-            <Button variant="custom" className="mx-auto d-block custom-btn">
+            <Button variant="custom" className="custom-btn">
               Open
+            </Button>
+            <Button variant="custom" className="float-right custom-btn-2">
+              Add
+            </Button>
+            <Button variant="custom" className="float-right custom-btn-2">
+              Remove
             </Button>
           </Link>
         </Card.Body>
