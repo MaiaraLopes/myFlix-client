@@ -15,7 +15,7 @@ export function ProfileView({ oldUserData, onBackClick, updateUser }) {
   const handleUpdateBtn = () => {
     axios
       .put(
-        "https://myflix-ml.herokuapp.com/users/${user}",
+        `https://myflix-ml.herokuapp.com/users/${oldUserData.Username}`,
         {
           Username: newUsername,
           Password: newPassword,
@@ -28,7 +28,7 @@ export function ProfileView({ oldUserData, onBackClick, updateUser }) {
       )
       .then((response) => {
         const data = response.data;
-        props.updateUser(data);
+        window.open("/", "_self");
       })
       .catch((e) => {
         console.log("Error updating user");

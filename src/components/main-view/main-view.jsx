@@ -43,8 +43,7 @@ class MainView extends React.Component {
     localStorage.setItem("token", authData.token);
     localStorage.setItem("user", authData.user.Username);
     localStorage.setItem("userData", JSON.stringify(authData.user));
-    localStorage.setItem("user", newUserData.Username);
-    localStorage.setItem("userData", JSON.stringify(newUserData));
+
     this.getMovies(authData.token);
   }
 
@@ -72,6 +71,8 @@ class MainView extends React.Component {
   };
 
   updateUser(newUserData) {
+    localStorage.setItem("user", newUserData.Username);
+    localStorage.setItem("userData", JSON.stringify(newUserData));
     this.setState({
       user: newUserData.Username,
       userData: newUserData,
