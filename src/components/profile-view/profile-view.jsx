@@ -163,8 +163,8 @@ export function ProfileView({
             <Button
               className="mt-3 ml-2 custom-btn"
               variant="custom"
-              onClick={() => {
-                handleUpdateBtn();
+              onClick={(e) => {
+                handleUpdateBtn(e);
               }}
             >
               Update
