@@ -131,6 +131,7 @@ class MainView extends React.Component {
                     onBackClick={() => {
                       history.goBack();
                     }}
+                    onLoggedOut={this.onLoggedOut}
                   />
                 </Col>
               );
