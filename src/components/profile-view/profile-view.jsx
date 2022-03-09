@@ -47,6 +47,13 @@ export function ProfileView({
       setBirthdateErr("Birthdate required");
       isReq = false;
     }
+    if (iReq) {
+      setUsernameErr("");
+      setPasswordErr("");
+      setEmailErr("");
+      setBirthdateErr("");
+    }
+    return isReq;
   };
 
   let token = localStorage.getItem("token");

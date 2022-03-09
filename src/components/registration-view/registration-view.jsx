@@ -41,6 +41,12 @@ export function RegistrationView(props) {
       setBirthdateErr("Birthdate required");
       isReq = false;
     }
+    if (iReq) {
+      setUsernameErr("");
+      setPasswordErr("");
+      setEmailErr("");
+      setBirthdateErr("");
+    }
     return isReq;
   };
 
