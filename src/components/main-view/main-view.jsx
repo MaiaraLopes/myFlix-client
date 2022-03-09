@@ -136,6 +136,9 @@ class MainView extends React.Component {
                       history.goBack();
                     }}
                     onLoggedOut={this.onLoggedOut}
+                    favMovies={movies.filter((movie) =>
+                      userData.FavoriteMovies.includes(movie._id)
+                    )}
                   />
                 </Col>
               );

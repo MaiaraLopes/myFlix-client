@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { Card, CardGroup, Button, Form } from "react-bootstrap";
+import { Card, CardGroup, Button, Form, Row, Col } from "react-bootstrap";
 import axios from "axios";
 import { indexOf } from "lodash";
+import { MovieCard } from "../movie-card/movie-card";
 
 export function ProfileView({
   oldUserData,
   onBackClick,
   updateUser,
   onLoggedOut,
+  favMovies,
 }) {
   const [newUsername, setNewUsername] = useState(oldUserData.Username);
   const [newPassword, setNewPassword] = useState("");
@@ -154,6 +156,21 @@ export function ProfileView({
                 }}
               />
               {birthdateErr && <p>{birthdateErr}</p>}
+            </Form.Group>
+
+            <Form.Group>
+              <Form.Label className="mt-2">Favorite Movies</Form.Label>
+              <Row>
+                {favMovies.map((m) => (
+                  <Col key={m._id} md={3}>
+                    <MovieCard
+                      movie={m}
+                      userData={oldUserData}
+                      updateUser={updateUser}
+                    />
+                  </Col>
+                ))}
+              </Row>
             </Form.Group>
 
             <Button
