@@ -10,6 +10,8 @@ import { MovieView } from "../movie-view/movie-view";
 import { RegistrationView } from "../registration-view/registration-view";
 import { Navbar } from "../navbar/navbar";
 import { ProfileView } from "../profile-view/profile-view";
+import { DirectorView } from "../director-view/director-view";
+import { GenreView } from "../genre-view/genre-view";
 
 class MainView extends React.Component {
   constructor() {
@@ -146,6 +148,7 @@ class MainView extends React.Component {
           />
 
           <Route
+            exact
             path="/movies/:MovieID"
             render={({ match, history }) => {
               if (!user) return <Redirect to="/" />;
@@ -161,16 +164,15 @@ class MainView extends React.Component {
           />
 
           <Route
-            path="movies/Director/:Name"
+            path="/movies/Director/:Name"
             render={({ match, history }) => {
               if (!user) return <Redirect to="/" />;
               return (
                 <Col md={8}>
                   <DirectorView
-                    director={
-                      movies.find((m) => m.Director.Name === match.params.Name)
-                        .Director
-                    }
+                    movie={movies.find(
+                      (m) => m.Director.Name === match.params.Name
+                    )}
                     onBackClick={() => history.goBack()}
                   />
                 </Col>
@@ -180,15 +182,14 @@ class MainView extends React.Component {
 
           <Route
             path="/movies/Genre/:Name"
-            render={({ match }) => {
+            render={({ match, history }) => {
               if (!user) return <Redirect to="/" />;
               return (
                 <Col md={8}>
                   <GenreView
-                    genre={
-                      movies.find((m) => m.Genre.Name === match.params.Name)
-                        .Genre
-                    }
+                    movie={movies.find(
+                      (m) => m.Genre.Name === match.params.Name
+                    )}
                     onBackClick={() => history.goBack()}
                   />
                 </Col>

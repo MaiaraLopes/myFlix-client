@@ -26,7 +26,7 @@ export class GenreView extends React.Component {
                 <span className="value">{movie.Genre.Description}</span>
               </div>
               <Button
-                className="custon-btn-2"
+                className="custom-btn-2 mt-2"
                 variant="custom"
                 onClick={() => {
                   onBackClick();

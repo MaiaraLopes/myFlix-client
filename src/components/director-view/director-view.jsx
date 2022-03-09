@@ -22,11 +22,11 @@ export class DirectorView extends React.Component {
                 <span className="value">{movie.Director.Name}</span>
               </div>
               <div className="director-bio">
-                <span className="label">Bio:</span>
+                <span className="label">Bio: </span>
                 <span className="value">{movie.Director.Bio}</span>
               </div>
               <Button
-                className="custom-btn-2"
+                className="custom-btn-2 mt-2"
                 variant="custom"
                 onClick={() => {
                   onBackClick();
