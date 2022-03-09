@@ -104,7 +104,7 @@ class MainView extends React.Component {
                   <MovieCard
                     movie={m}
                     userData={userData}
-                    updateUser={() => this.updateUser()}
+                    updateUser={(newUserData) => this.updateUser(newUserData)}
                   />
                 </Col>
               ));
