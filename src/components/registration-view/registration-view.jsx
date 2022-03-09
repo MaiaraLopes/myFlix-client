@@ -4,7 +4,7 @@ import { Form, Button, Card, CardGroup } from "react-bootstrap";
 import "../../index.scss";
 import axios from "axios";
 
-export function RegistrationView(props) {
+export function RegistrationView() {
   const [newUsername, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");

@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Card, CardGroup } from "react-bootstrap";
 import "../../index.scss";
+import PropTypes from "prop-types";
 
 export class DirectorView extends React.Component {
   render() {
@@ -17,7 +18,7 @@ export class DirectorView extends React.Component {
                   src={movie.ImagePath}
                 />
               </div>
-              <div className="movie-director">
+              <div className="director-name">
                 <span className="label">Name: </span>
                 <span className="value">{movie.Director.Name}</span>
               </div>
@@ -41,3 +42,14 @@ export class DirectorView extends React.Component {
     );
   }
 }
+
+DirectorView.propTypes = {
+  movie: PropTypes.shape({
+    ImagePath: PropTypes.string.isRequired,
+    Director: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Bio: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
+  onBackClick: PropTypes.func.isRequired,
+};

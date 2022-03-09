@@ -3,6 +3,7 @@ import { Card, CardGroup, Button, Form, Row, Col } from "react-bootstrap";
 import axios from "axios";
 import { indexOf } from "lodash";
 import { MovieCard } from "../movie-card/movie-card";
+import PropTypes from "prop-types";
 
 export function ProfileView({
   oldUserData,
@@ -208,3 +209,13 @@ export function ProfileView({
     </CardGroup>
   );
 }
+
+ProfileView.propTypes = {
+  oldUserData: PropTypes.shape({
+    Username: PropTypes.string.isRequired,
+    favMovies: PropTypes.arrayOf(PropTypes.string.isRequired),
+  }).isRequired,
+  onBackClick: PropTypes.func.isRequired,
+  onLoggedOut: PropTypes.func.isRequired,
+  updateUser: PropTypes.func.isRequired,
+};

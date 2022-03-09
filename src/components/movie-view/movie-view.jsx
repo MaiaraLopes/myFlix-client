@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Card, CardGroup } from "react-bootstrap";
 import "../../index.scss";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 export class MovieView extends React.Component {
   render() {
@@ -48,3 +49,12 @@ export class MovieView extends React.Component {
     );
   }
 }
+
+MovieView.propTypes = {
+  movie: PropTypes.shape({
+    ImagePath: PropTypes.string.isRequired,
+    Title: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+  }).isRequired,
+  onBackClick: PropTypes.func.isRequired,
+};

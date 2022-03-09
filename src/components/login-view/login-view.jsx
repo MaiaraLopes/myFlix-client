@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button, Card, CardGroup } from "react-bootstrap";
 import axios from "axios";
+import PropTypes from "prop-types";
 
 export function LoginView(props) {
   const [username, setUsername] = useState("");
@@ -58,3 +59,7 @@ export function LoginView(props) {
     </CardGroup>
   );
 }
+
+LoginView.propTypes = {
+  onLoggedIn: PropTypes.func.isRequired,
+};

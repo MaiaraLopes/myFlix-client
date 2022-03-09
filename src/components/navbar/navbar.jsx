@@ -1,5 +1,6 @@
 import React from "react";
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 export function Navbar({ user, onLoggedOut }) {
   let token = localStorage.getItem("token");
@@ -27,3 +28,10 @@ export function Navbar({ user, onLoggedOut }) {
     </Navbar>
   );
 }
+
+Navbar.propTypes = {
+  user: PropTypes.shape({
+    Username: PropTypes.string.isRequired,
+  }).isRequired,
+  onLoggedOut: PropTypes.func.isRequired,
+};
