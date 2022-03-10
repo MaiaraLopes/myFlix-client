@@ -49,7 +49,7 @@ DirectorView.propTypes = {
     Director: PropTypes.shape({
       Name: PropTypes.string.isRequired,
       Bio: PropTypes.string.isRequired,
-    }),
+    }).isRequired,
   }).isRequired,
   onBackClick: PropTypes.func.isRequired,
 };

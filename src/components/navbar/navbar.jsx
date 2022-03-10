@@ -18,6 +18,7 @@ export function Navbar({ user, onLoggedOut }) {
               className="custom-btn-2"
               onClick={() => {
                 onLoggedOut();
+                window.open("/", "_self");
               }}
             >
               Sign out
@@ -30,8 +31,6 @@ export function Navbar({ user, onLoggedOut }) {
 }
 
 Navbar.propTypes = {
-  user: PropTypes.shape({
-    Username: PropTypes.string.isRequired,
-  }).isRequired,
+  user: PropTypes.string.isRequired,
   onLoggedOut: PropTypes.func.isRequired,
 };
