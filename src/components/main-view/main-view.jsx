@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { connect } from "react-redux";
 import { Row, Col } from "react-bootstrap";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import "../../index.scss";
@@ -12,13 +13,14 @@ import { Navbar } from "../navbar/navbar";
 import { ProfileView } from "../profile-view/profile-view";
 import { DirectorView } from "../director-view/director-view";
 import { GenreView } from "../genre-view/genre-view";
+import { setMovies } from "../../actions/actions";
+//import MoviesList from "../movies-list/movies-list";
 
 class MainView extends React.Component {
   constructor() {
     super();
     //Initial state is set to null
     this.state = {
-      movies: [],
       user: null,
       userData: null,
     };
@@ -55,9 +57,7 @@ class MainView extends React.Component {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        this.setState({
-          movies: response.data,
-        });
+        this.props.setMovies(response.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -82,7 +82,8 @@ class MainView extends React.Component {
   }
 
   render() {
-    const { movies, user, userData } = this.state;
+    const { user, userData } = this.state;
+    const { movies } = this.props;
 
     if (movies.length === 0 && user) return <div className="main-view" />;
 
@@ -202,4 +203,8 @@ class MainView extends React.Component {
   }
 }
 
-export default MainView;
+let mapStateToProps = (state) => {
+  return { movies: state.movies };
+};
+
+export default connect(mapStateProps, { SetMovies })(MainView);
