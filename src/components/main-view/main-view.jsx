@@ -104,8 +104,8 @@ class MainView extends React.Component {
                 );
               return movies.map((m) => (
                 <Col md={3} key={m._id} className="card-col">
-                  <MovieCard
-                    movie={m}
+                  <MoviesList
+                    movies={movies}
                     userData={userData}
                     updateUser={(newUserData) => this.updateUser(newUserData)}
                   />
@@ -207,4 +207,4 @@ let mapStateToProps = (state) => {
   return { movies: state.movies };
 };
 
-export default connect(mapStateProps, { SetMovies })(MainView);
+export default connect(mapStateToProps, { SetMovies })(MainView);

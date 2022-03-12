@@ -1022,8 +1022,15 @@ var _indexScss = require("./index.scss");
 const store = _redux.createStore(_reducersDefault.default, _reduxDevtoolsExtension.devToolsEnhancer());
 class MyFlixApplication extends _reactDefault.default.Component {
     render() {
-        return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_containerDefault.default, {
-            children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_mainViewDefault.default, {
+        return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRedux.Provider, {
+            store: store,
+            children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_containerDefault.default, {
+                children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_mainViewDefault.default, {
+                }, void 0, false, {
+                    fileName: "src/index.jsx",
+                    lineNumber: 19,
+                    columnNumber: 11
+                }, this)
             }, void 0, false, {
                 fileName: "src/index.jsx",
                 lineNumber: 18,
@@ -26696,8 +26703,8 @@ class MainView extends _reactDefault.default.Component {
                                 return movies.map((m)=>/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Col, {
                                         md: 3,
                                         className: "card-col",
-                                        children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_movieCard.MovieCard, {
-                                            movie: m,
+                                        children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(MoviesList, {
+                                            movies: movies,
                                             userData: userData,
                                             updateUser: (newUserData)=>this.updateUser(newUserData)
                                         }, void 0, false, void 0, void 0)
@@ -26832,7 +26839,7 @@ let mapStateToProps = (state)=>{
         movies: state.movies
     };
 };
-exports.default = _reactRedux.connect(mapStateProps, {
+exports.default = _reactRedux.connect(mapStateToProps, {
     SetMovies
 })(MainView);
 
