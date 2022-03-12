@@ -1,7 +1,7 @@
 import React from "react";
 import { Col } from "react-bootstrap";
 import { connect } from "react-redux";
-
+import visibilityFilterInput from "../visibility-filter-input/visibility-filter-input";
 import { MovieCard } from "../movie-card/movie-card";
 
 const mapStateToProps = (state) => {
@@ -21,15 +21,22 @@ function MoviesList(props) {
   }
   if (!movies) return <div className="main-view" />;
 
-  return filteredMovies.map((m) => (
-    <Col md={3} key={m._id}>
-      <MovieCard
-        movie={m}
-        userData={userData}
-        updateUser={(newUserData) => this.updateUser(newUserData)}
-      />
-    </Col>
-  ));
+  return (
+    <>
+      <Col md={12} style={{ margin: "1em" }}>
+        <visibilityFilterInput visibilityFilter={visibilityFilter} />
+      </Col>
+      {filteredMovies.map((m) => (
+        <Col md={3} key={m._id}>
+          <MovieCard
+            movie={m}
+            userData={userData}
+            updateUser={(newUserData) => this.updateUser(newUserData)}
+          />
+        </Col>
+      ))}
+    </>
+  );
 }
 
 export default connect(mapStateToProps)(MoviesList);
