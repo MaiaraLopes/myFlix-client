@@ -26840,7 +26840,7 @@ let mapStateToProps = (state)=>{
     };
 };
 exports.default = _reactRedux.connect(mapStateToProps, {
-    SetMovies
+    setMovies: _actions.setMovies
 })(MainView);
 
   $parcel$ReactRefreshHelpers$f7a6.postlude(module);
