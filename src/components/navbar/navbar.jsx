@@ -31,6 +31,6 @@ export function Navbar({ user, onLoggedOut }) {
 }
 
 Navbar.propTypes = {
-  user: PropTypes.string.isRequired,
-  onLoggedOut: PropTypes.func.isRequired,
+  user: PropTypes.string,
+  onLoggedOut: PropTypes.func,
 };

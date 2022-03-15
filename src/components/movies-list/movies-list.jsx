@@ -1,8 +1,9 @@
 import React from "react";
-import { Col } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { connect } from "react-redux";
-import visibilityFilterInput from "../visibility-filter-input/visibility-filter-input";
+import VisibilityFilterInput from "../visibility-filter-input/visibility-filter-input";
 import { MovieCard } from "../movie-card/movie-card";
+import "../../index.scss";
 
 const mapStateToProps = (state) => {
   const { visibilityFilter } = state;
@@ -15,7 +16,7 @@ function MoviesList(props) {
   let filteredMovies = movies;
 
   if (visibilityFilter !== "") {
-    filteredMovies = movie.filter((m) =>
+    filteredMovies = movies.filter((m) =>
       m.Title.toLowerCase().includes(visibilityFilter.toLowerCase())
     );
   }
@@ -24,17 +25,19 @@ function MoviesList(props) {
   return (
     <>
       <Col md={12} style={{ margin: "1em" }}>
-        <visibilityFilterInput visibilityFilter={visibilityFilter} />
+        <VisibilityFilterInput visibilityFilter={visibilityFilter} />
       </Col>
-      {filteredMovies.map((m) => (
-        <Col md={3} key={m._id}>
-          <MovieCard
-            movie={m}
-            userData={userData}
-            updateUser={(newUserData) => this.updateUser(newUserData)}
-          />
-        </Col>
-      ))}
+      <Row>
+        {filteredMovies.map((m) => (
+          <Col className="card-col" md={3} key={m._id}>
+            <MovieCard
+              movie={m}
+              userData={userData}
+              updateUser={(newUserData) => updateUser(newUserData)}
+            />
+          </Col>
+        ))}
+      </Row>
     </>
   );
 }

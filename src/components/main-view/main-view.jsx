@@ -14,7 +14,7 @@ import { ProfileView } from "../profile-view/profile-view";
 import { DirectorView } from "../director-view/director-view";
 import { GenreView } from "../genre-view/genre-view";
 import { setMovies } from "../../actions/actions";
-//import MoviesList from "../movies-list/movies-list";
+import MoviesList from "../movies-list/movies-list";
 
 class MainView extends React.Component {
   constructor() {
@@ -102,15 +102,15 @@ class MainView extends React.Component {
                     <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
                   </Col>
                 );
-              return movies.map((m) => (
-                <Col md={3} key={m._id} className="card-col">
+              return (
+                <Col className="card-col">
                   <MoviesList
                     movies={movies}
                     userData={userData}
                     updateUser={(newUserData) => this.updateUser(newUserData)}
                   />
                 </Col>
-              ));
+              );
             }}
           />
 
@@ -136,7 +136,7 @@ class MainView extends React.Component {
                     oldUserData={userData}
                     updateUser={(newUserData) => this.updateUser(newUserData)}
                     onBackClick={() => {
-                      history.goBack();
+                      window.open("/", "_self");
                     }}
                     onLoggedOut={this.onLoggedOut}
                     favMovies={movies.filter((movie) =>
