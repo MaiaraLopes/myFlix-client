@@ -13,36 +13,23 @@ import { Navbar } from "../navbar/navbar";
 import { ProfileView } from "../profile-view/profile-view";
 import { DirectorView } from "../director-view/director-view";
 import { GenreView } from "../genre-view/genre-view";
-import { setMovies } from "../../actions/actions";
+import { setMovies, setUser, setUserData } from "../../actions/actions";
 import MoviesList from "../movies-list/movies-list";
 
 class MainView extends React.Component {
-  constructor() {
-    super();
-    //Initial state is set to null
-    this.state = {
-      user: null,
-      userData: null,
-    };
-  }
-
   componentDidMount() {
     let accessToken = localStorage.getItem("token");
     if (accessToken !== null) {
-      this.setState({
-        user: localStorage.getItem("user"),
-        userData: JSON.parse(localStorage.getItem("userData")),
-      });
+      this.setUser(localStorage.getItem("user"));
+      this.setUserData(JSON.parse(localStorage.getItem("userData")));
       this.getMovies(accessToken);
     }
   }
 
   onLoggedIn(authData) {
     console.log(authData);
-    this.setState({
-      user: authData.user.Username,
-      userData: authData.user,
-    });
+    this.setUser(authData.user.Username);
+    this.setUserData(authData.user);
 
     localStorage.setItem("token", authData.token);
     localStorage.setItem("user", authData.user.Username);
@@ -67,23 +54,18 @@ class MainView extends React.Component {
   onLoggedOut = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    this.setState({
-      user: null,
-    });
+    this.setUser(null);
   };
 
   updateUser(newUserData) {
     localStorage.setItem("user", newUserData.Username);
     localStorage.setItem("userData", JSON.stringify(newUserData));
-    this.setState({
-      user: newUserData.Username,
-      userData: newUserData,
-    });
+    this.setUser(newUserData.Username);
+    this.setUserData(newUserData);
   }
 
   render() {
-    const { user, userData } = this.state;
-    const { movies } = this.props;
+    const { movies, user, userData } = this.props;
 
     if (movies.length === 0 && user) return <div className="main-view" />;
 
@@ -128,7 +110,7 @@ class MainView extends React.Component {
 
           <Route
             path={`/users/${user}`}
-            render={({ history }) => {
+            render={() => {
               if (!user) return <Redirect to="/" />;
               return (
                 <Col>
@@ -204,7 +186,9 @@ class MainView extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-  return { movies: state.movies };
+  return { movies: state.movies, user: state.user, userData: state.userData };
 };
 
-export default connect(mapStateToProps, { setMovies })(MainView);
+export default connect(mapStateToProps, { setMovies, setUser, setUserData })(
+  MainView
+);
