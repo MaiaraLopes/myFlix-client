@@ -20,16 +20,16 @@ class MainView extends React.Component {
   componentDidMount() {
     let accessToken = localStorage.getItem("token");
     if (accessToken !== null) {
-      this.setUser(localStorage.getItem("user"));
-      this.setUserData(JSON.parse(localStorage.getItem("userData")));
+      this.props.setUser(localStorage.getItem("user"));
+      this.props.setUserData(JSON.parse(localStorage.getItem("userData")));
       this.getMovies(accessToken);
     }
   }
 
   onLoggedIn(authData) {
     console.log(authData);
-    this.setUser(authData.user.Username);
-    this.setUserData(authData.user);
+    this.props.setUser(authData.user.Username);
+    this.props.setUserData(authData.user);
 
     localStorage.setItem("token", authData.token);
     localStorage.setItem("user", authData.user.Username);
@@ -54,14 +54,14 @@ class MainView extends React.Component {
   onLoggedOut = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    this.setUser(null);
+    this.props.setUser(null);
   };
 
   updateUser(newUserData) {
     localStorage.setItem("user", newUserData.Username);
     localStorage.setItem("userData", JSON.stringify(newUserData));
-    this.setUser(newUserData.Username);
-    this.setUserData(newUserData);
+    this.props.setUser(newUserData.Username);
+    this.props.setUserData(newUserData);
   }
 
   render() {

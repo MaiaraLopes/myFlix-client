@@ -12,7 +12,6 @@ const mapStateToProps = (state) => {
 
 function MoviesList(props) {
   const { movies, visibilityFilter, userData, updateUser } = props;
-  //I don't know how to pass the updateUser props here
   let filteredMovies = movies;
 
   if (visibilityFilter !== "") {
