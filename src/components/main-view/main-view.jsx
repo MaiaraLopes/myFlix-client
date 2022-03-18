@@ -17,19 +17,32 @@ import { setMovies, setUser, setUserData } from "../../actions/actions";
 import MoviesList from "../movies-list/movies-list";
 
 class MainView extends React.Component {
+  constructor() {
+    super();
+    //Initial state is set to null
+    this.state = {
+      user: null,
+      userData: null,
+    };
+  }
+
   componentDidMount() {
     let accessToken = localStorage.getItem("token");
     if (accessToken !== null) {
-      this.props.setUser(localStorage.getItem("user"));
-      this.props.setUserData(JSON.parse(localStorage.getItem("userData")));
+      this.setState({
+        user: localStorage.getItem("user"),
+        userData: JSON.parse(localStorage.getItem("userData")),
+      });
       this.getMovies(accessToken);
     }
   }
 
   onLoggedIn(authData) {
     console.log(authData);
-    this.props.setUser(authData.user.Username);
-    this.props.setUserData(authData.user);
+    this.setState({
+      user: authData.user.Username,
+      userData: authData.user,
+    });
 
     localStorage.setItem("token", authData.token);
     localStorage.setItem("user", authData.user.Username);
@@ -54,14 +67,18 @@ class MainView extends React.Component {
   onLoggedOut = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    this.props.setUser(null);
+    this.setState({
+      user: null,
+    });
   };
 
   updateUser(newUserData) {
     localStorage.setItem("user", newUserData.Username);
     localStorage.setItem("userData", JSON.stringify(newUserData));
-    this.props.setUser(newUserData.Username);
-    this.props.setUserData(newUserData);
+    this.setState({
+      user: newUserData.Username,
+      userData: newUserData,
+    });
   }
 
   render() {
