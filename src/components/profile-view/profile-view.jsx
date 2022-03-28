@@ -50,7 +50,7 @@ export function ProfileView({
       setBirthdateErr("Birthdate required");
       isReq = false;
     }
-    if (iReq) {
+    if (isReq) {
       setUsernameErr("");
       setPasswordErr("");
       setEmailErr("");

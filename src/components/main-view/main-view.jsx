@@ -17,32 +17,22 @@ import { setMovies, setUser, setUserData } from "../../actions/actions";
 import MoviesList from "../movies-list/movies-list";
 
 class MainView extends React.Component {
-  constructor() {
-    super();
-    //Initial state is set to null
-    this.state = {
-      user: null,
-      userData: null,
-    };
-  }
-
   componentDidMount() {
     let accessToken = localStorage.getItem("token");
     if (accessToken !== null) {
-      this.setState({
-        user: localStorage.getItem("user"),
-        userData: JSON.parse(localStorage.getItem("userData")),
-      });
       this.getMovies(accessToken);
+      this.props.setUser(localStorage.getItem("user"));
+      this.props.setUserData(JSON.parse(localStorage.getItem("userData")));
     }
+    console.log(this.props.user, "componentDidMount");
   }
 
   onLoggedIn(authData) {
     console.log(authData);
-    this.setState({
-      user: authData.user.Username,
-      userData: authData.user,
-    });
+    this.props.setUser(authData.user.Username);
+    this.props.setUserData(authData.user);
+
+    console.log(this.props.user);
 
     localStorage.setItem("token", authData.token);
     localStorage.setItem("user", authData.user.Username);
@@ -67,22 +57,19 @@ class MainView extends React.Component {
   onLoggedOut = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    this.setState({
-      user: null,
-    });
+    this.props.setUser(null);
   };
 
   updateUser(newUserData) {
     localStorage.setItem("user", newUserData.Username);
     localStorage.setItem("userData", JSON.stringify(newUserData));
-    this.setState({
-      user: newUserData.Username,
-      userData: newUserData,
-    });
+    this.props.setUser(newUserData.Username);
+    this.props.setUserData(newUserData);
   }
 
   render() {
-    const { movies, user, userData } = this.props;
+    const { movies, userData } = this.props;
+    const user = localStorage.getItem("user");
 
     if (movies.length === 0 && user) return <div className="main-view" />;
 
