@@ -41,7 +41,7 @@ export function RegistrationView() {
       setBirthdateErr("Birthdate required");
       isReq = false;
     }
-    if (iReq) {
+    if (isReq) {
       setUsernameErr("");
       setPasswordErr("");
       setEmailErr("");
