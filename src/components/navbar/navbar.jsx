@@ -7,7 +7,7 @@ export function MyNavBar({ user, onLoggedOut }) {
   let token = localStorage.getItem("token");
 
   return (
-    <MyNavBar bg="light" variant="light">
+    <Navbar bg="light" variant="light">
       <Container>
         <Navbar.Brand href="#">myFlix</Navbar.Brand>
         <Nav className="me-auto">
@@ -27,7 +27,7 @@ export function MyNavBar({ user, onLoggedOut }) {
           ) : null}
         </Nav>
       </Container>
-    </MyNavBar>
+    </Navbar>
   );
 }
 
