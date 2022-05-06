@@ -5,8 +5,6 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
@@ -20,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/MaiaraLopes/myFlix-client/issues"
   },
-  "homepage": "https://maiaralopes.github.io",
+  "homepage": "https://maiaralopes.github.io/myFlix-client",
   "dependencies": {
     "axios": "^0.26.0",
     "lodash": "^4.17.21",
