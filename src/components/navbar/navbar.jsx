@@ -11,9 +11,21 @@ export function MyNavBar({ user, onLoggedOut }) {
       <Container>
         <Navbar.Brand href="#">myFlix</Navbar.Brand>
         <Nav className="me-auto">
-          {!token ? <Link to="/">Sign in</Link> : null}
-          {!token ? <Link to={"/register"}>Register</Link> : null}
-          {!token ? null : <Link to={`/users/${user}`}>{user}</Link>}
+          {!token ? (
+            <Link className="nav-link" to="/">
+              Sign in
+            </Link>
+          ) : null}
+          {!token ? (
+            <Link className="nav-link" to={"/register"}>
+              Register
+            </Link>
+          ) : null}
+          {!token ? null : (
+            <Link className="nav-link" to={`/users/${user}`}>
+              {user}
+            </Link>
+          )}
           {token ? (
             <Button
               className="custom-btn-2"
