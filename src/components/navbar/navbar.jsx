@@ -1,8 +1,9 @@
 import React from "react";
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
-export function Navbar({ user, onLoggedOut }) {
+export function MyNavBar({ user, onLoggedOut }) {
   let token = localStorage.getItem("token");
 
   return (
@@ -10,9 +11,9 @@ export function Navbar({ user, onLoggedOut }) {
       <Container>
         <Navbar.Brand href="#">myFlix</Navbar.Brand>
         <Nav className="me-auto">
-          {!token ? <Nav.Link href="/">Sign in</Nav.Link> : null}
-          {!token ? <Nav.Link href={"/register"}>Register</Nav.Link> : null}
-          {!token ? null : <Nav.Link href={`/users/${user}`}>{user}</Nav.Link>}
+          {!token ? <Link to="/">Sign in</Link> : null}
+          {!token ? <Link to={"/register"}>Register</Link> : null}
+          {!token ? null : <Link to={`/users/${user}`}>{user}</Link>}
           {token ? (
             <Button
               className="custom-btn-2"

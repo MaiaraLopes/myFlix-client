@@ -9,7 +9,7 @@ import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { RegistrationView } from "../registration-view/registration-view";
-import { Navbar } from "../navbar/navbar";
+import { MyNavBar } from "../navbar/navbar";
 import { ProfileView } from "../profile-view/profile-view";
 import { DirectorView } from "../director-view/director-view";
 import { GenreView } from "../genre-view/genre-view";
@@ -75,7 +75,7 @@ class MainView extends React.Component {
 
     return (
       <Router>
-        <Navbar user={user} onLoggedOut={this.onLoggedOut} />
+        <MyNavBar user={user} onLoggedOut={this.onLoggedOut} />
 
         <Row className="main-view justify-content-md-center mt-4 mb-4">
           <Route
