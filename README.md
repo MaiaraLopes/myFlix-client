@@ -6,28 +6,7 @@ This is the front-end (client side) part of the myFlix app based on its existing
 
 ## Built with
 
-MERN tech stack
-
-- MongoDB
-
-- Express
-
-- React
-
-- Node.js
-## Features
-
-- Main view with a list of all films from the database
-
-- Movie view with information from a specific movie
-
-- Director view with information from the director
-
-- Genre view with information from the movie genre
-
-- Profile view with the information of the user currently logged in
-
-- Favorite movies view with the movies the user has favorited
+Parcel, React, Axios, Redux, React-Bootstrap, [Movie API](https://maiaralopes.github.io/myFlix-Angular-client/).
 
 
 ## Functionality
